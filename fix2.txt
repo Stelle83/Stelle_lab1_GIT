@@ -1,0 +1,70 @@
+POWERSHELL
+
+Steg 1
+md Stelle_lab1_GIT
+cd C:\ITHS_stelle_2024\Stelle_lab1_GIT
+git --version
+git config --global user.name "Stelle Simonlatser"
+git config --global user.email "stelle83@gmail.com"
+git config --global init.defaultBranch main
+git config --list
+
+
+Steg 2
+
+git init
+git branch -M main
+"duck`nmoose`ncat" > README.md
+git add README.md
+git commit -m "Initial commit"
+git switch -c feature1
+"dog" >> .\README.md
+(Get-Content README.md) -replace 'moose', 'mouse' | Set-Content README.md
+git add .\README.md
+git commit -m "Replace moose with mouse and add dog"
+git switch main
+(Get-Content README.md) -replace 'moose', 'mahmut' | Set-Content README.md
+git add .\README.md
+git commit -m "Replace moose with mahmut"
+
+git merge feature1
+### I changed it manually, I couldn't open the file to see both of the commits
+
+git add .\README.md
+type .\README.md
+git commit -m "Merge feature1 to main"
+
+git tag -a extinct -m "Resolves merge conflict between main and feature1"
+
+git reset --hard HEAD^
+type .\README.md
+
+git branch feature2
+git branch --all
+
+
+$lines = Get-Content README.md
+$capitalizedLines = $lines | ForEach-Object { $_.Substring(0,1).ToUpper() + $_.Substring(1) }
+$capitalizedLines | Set-Content README.md
+type .\README.md
+
+git add .\README.md
+git status
+git commit -m "Capitalizes the first letter"
+
+git switch feature2
+
+
+New-Item fix1.txt
+git add .
+git commit -m "add fix1.txt"
+
+New-Item fix2.txt
+git add .
+git commit -m "add fix2.txt"
+
+git switch main
+ls
+
+git log --all
+git cherry-pick c1802c
