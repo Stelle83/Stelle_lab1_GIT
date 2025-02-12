@@ -3,7 +3,7 @@
 
 ### Ignore all the catalogs out and target
 /out/
-/target/**/*
+/target/*
 
 ### Allow files with extension .html
-!target/**/**/*.html
+!target/**/*.html
